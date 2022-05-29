@@ -1,0 +1,66 @@
+﻿<ResourceDictionary
+    x:Class="nina.eigenHacks.Recoverability.Triggers.DataTemplates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mini="clr-namespace:NINA.View.Sequencer.MiniSequencer;assembly=NINA.Sequencer"
+    xmlns:ns="clr-namespace:NINA.Core.Locale;assembly=NINA.Core"
+    xmlns:rt="clr-namespace:nina.eigenHacks.Recoverability.Triggers"
+    xmlns:rules="clr-namespace:NINA.Core.Utility.ValidationRules;assembly=NINA.Core"
+    xmlns:nina="clr-namespace:NINA.View.Sequencer;assembly=NINA.Sequencer">
+
+    <DataTemplate x:Key="nina.eigenHacks.Recoverability.Triggers.CenterAfterExposureCount_Mini">
+        <mini:MiniTrigger>
+            <mini:MiniTrigger.TriggerProgressContent>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="{ns:Loc LblCenterTarget}" />
+                    <TextBlock
+                        Margin="5,0,0,0"
+                        VerticalAlignment="Center"
+                        Text="{Binding ExposuresTaken, StringFormat='{}{0:0}'}" />
+                    <TextBlock Text="/" />
+                    <TextBlock VerticalAlignment="Center" Text="{Binding AfterExposures, StringFormat='{}{0:0}'}" />
+                </StackPanel>
+            </mini:MiniTrigger.TriggerProgressContent>
+        </mini:MiniTrigger>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type rt:CenterAfterExposureCount}">
+        <nina:SequenceBlockView>
+            <nina:SequenceBlockView.SequenceItemContent>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="{ns:Loc LblCenterTarget}" />
+                        <TextBlock VerticalAlignment="Center" Text=" after " />
+                        <TextBlock VerticalAlignment="Center" Text="{ns:Loc LblExposures}" />
+                        <TextBox
+                            MinWidth="40"
+                            Margin="5,0,0,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center">
+                            <TextBox.Text>
+                                <Binding Path="AfterExposures">
+                                    <Binding.ValidationRules>
+                                        <rules:StrictGreaterZeroRule />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </nina:SequenceBlockView.SequenceItemContent>
+            <nina:SequenceBlockView.SequenceItemProgressContent>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="{ns:Loc LblExposures}" />
+                        <TextBlock
+                            Margin="5,0,0,0"
+                            VerticalAlignment="Center"
+                            Text="{Binding ExposuresTaken}" />
+                        <TextBlock Text="/" />
+                        <TextBlock VerticalAlignment="Center" Text="{Binding AfterExposures}" />
+                    </StackPanel>
+                </StackPanel>
+            </nina:SequenceBlockView.SequenceItemProgressContent>
+        </nina:SequenceBlockView>
+    </DataTemplate>
+</ResourceDictionary>
