@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3EC732EB-72FC-4DF8-94FC-00A74B8B9ED6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>nina.eigenHacks</RootNamespace>
+    <AssemblyName>nina.eigenHacks</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Astrometry, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Astrometry.2.0.0.2059-beta\lib\net48\NINA.Astrometry.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Core, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Core.2.0.0.2059-beta\lib\net48\NINA.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Equipment, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Equipment.2.0.0.2059-beta\lib\net48\NINA.Equipment.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Image, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Image.2.0.0.2059-beta\lib\net48\NINA.Image.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.MGEN, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.MGEN.2.0.0.2059-beta\lib\net48\NINA.MGEN.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.PlateSolving, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.PlateSolving.2.0.0.2059-beta\lib\net48\NINA.PlateSolving.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Plugin, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Plugin.2.0.0.2059-beta\lib\net48\NINA.Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Profile, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Profile.2.0.0.2059-beta\lib\net48\NINA.Profile.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.Sequencer, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.Sequencer.2.0.0.2059-beta\lib\net48\NINA.Sequencer.dll</HintPath>
+    </Reference>
+    <Reference Include="NINA.WPF.Base, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINA.WPF.Base.2.0.0.2059-beta\lib\net48\NINA.WPF.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="NINACustomControlLibrary, Version=2.0.0.2059, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NINACustomControlLibrary.2.0.0.2059-beta\lib\net48\NINACustomControlLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recoverability\Instructions\ReconnectCameraOnExposureItemFailed.cs" />
+    <Compile Include="Synchronization\CrossProcessBarrier.cs" />
+    <Compile Include="Synchronization\CrossProcessBarrierState.cs" />
+    <Compile Include="Synchronization\CrossProcessBarrierStateReader.cs" />
+    <Compile Include="Synchronization\CrossProcessBarrierStatus.cs" />
+    <Compile Include="Synchronization\ICrossProcessBarrier.cs" />
+    <Compile Include="Synchronization\Instructions\SignalReadyAndWait.cs" />
+    <Compile Include="Synchronization\Instructions\SignalReadyAndWaitTemplate.xaml.cs">
+      <DependentUpon>SignalReadyAndWaitTemplate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Synchronization\Instructions\SychronizationScope.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Synchronization\Instructions\SignalReadyAndWaitTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Accord.3.8.0\build\Accord.targets" Condition="Exists('..\packages\Accord.3.8.0\build\Accord.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+  </Target>
+  <Target Name="PostBuildMacros">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Targets" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <VersionNumber Include="@(Targets->'%(Version)')" />
+    </ItemGroup>
+  </Target>
+  <Import Project="..\packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets" Condition="Exists('..\packages\Microsoft.NETFramework.ReferenceAssemblies.net48.1.0.0\build\Microsoft.NETFramework.ReferenceAssemblies.net48.targets')" />
+  <PropertyGroup>
+    <PostBuildEventDependsOn>
+        $(PostBuildEventDependsOn);
+        PostBuildMacros;
+    </PostBuildEventDependsOn>
+    <PostBuildEvent>
+        if not exist "%25localappdata%25\NINA\Plugins" (
+            echo "Creating Plugins %25localappdata%25\NINA\Plugins folder"
+            mkdir  "%25localappdata%25\NINA\Plugins"
+        )
+        if exist "%25localappdata%25\NINA\Plugins\eigenHacks" (
+            echo " folder cleanup"
+            rmdir "%25localappdata%25\NINA\Plugins\eigenHacks" /S /Q
+        )
+        if not exist "%25localappdata%25\NINA\Plugins\eigenHacks" (
+            mkdir "%25localappdata%25\NINA\Plugins\eigenHacks"
+        )
+        echo "Copying $(PlatformName) $(TargetFileName)"
+        copy "$(TargetDir)$(TargetFileName)" "%25localappdata%25\NINA\Plugins\eigenHacks\$(TargetName).@(VersionNumber)$(TargetExt)" /Y</PostBuildEvent>
+  </PropertyGroup>
+</Project>

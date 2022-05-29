@@ -1,0 +1,52 @@
+﻿<ResourceDictionary
+    x:Class="nina.eigenHacks.SignalReadyAndWaitTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:nina.eigenHacks.Synchronization.Instructions"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:nina="clr-namespace:NINA.View.Sequencer;assembly=NINA.Sequencer"
+    mc:Ignorable="d">
+    <DataTemplate DataType="{x:Type local:SignalReadyAndWait}">
+        <nina:SequenceBlockView DataContext="{Binding}">
+            <nina:SequenceBlockView.SequenceItemContent>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="Tag: " />
+                        <TextBox
+                            MinWidth="50"
+                            Margin="5,0,0,0"
+                            Text="{Binding Tag}"
+                            TextAlignment="Right" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Text="Maximum Wait Time (s): " />
+                        <TextBox
+                            MinWidth="50"
+                            Margin="5,0,0,0"
+                            Text="{Binding WaitForSeconds}"
+                            TextAlignment="Right" />
+                    </StackPanel>
+                </StackPanel>
+            </nina:SequenceBlockView.SequenceItemContent>
+        </nina:SequenceBlockView>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type local:SychronizationScope}">
+        <nina:SequenceContainerView>
+            <nina:SequenceContainerView.SequenceContainerContent>
+                <Border BorderThickness="0,0,0,2" Margin="4">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontStyle="Italic"
+                            Opacity="0.4"
+                            Text="Scope Name: " />
+                        <TextBox Margin="5,0,0,0" MinWidth="50" Text="{Binding ScopeName}" />
+                    </StackPanel>
+                </Border>
+            </nina:SequenceContainerView.SequenceContainerContent>
+        </nina:SequenceContainerView>
+
+    </DataTemplate>
+</ResourceDictionary>
