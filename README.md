@@ -1,43 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.InteropServices;
-
-// General Information about an assembly is controlled through the following
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("nina.eigenHacks")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Jonathan MacCollum")]
-[assembly: AssemblyProduct("nina.eigenHacks")]
-[assembly: AssemblyCopyright("Copyright © 2022")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
-[assembly: AssemblyMetadata("LicenseURL", "https://www.mozilla.org/en-US/MPL/2.0/")]
-[assembly: AssemblyMetadata("Tags", "Recoverability,Synchronization")]
-// Setting ComVisible to false makes the types in this assembly not visible
-// to COM components.  If you need to access a type in this assembly from
-// COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3ec732eb-72fc-4df8-94fc-00a74b8b9ed6")]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.8.1.1002")]
-[assembly: AssemblyFileVersion("0.8.1.1002")]
-[assembly: AssemblyMetadata("MinimumApplicationVersion", "2.0.0.2001")]
-[assembly: AssemblyMetadata("Repository", "https://github.com/JonathanMaccollum/nina.eigenHacks/")]
-
-[assembly: AssemblyMetadata("LongDescription", @"# eigenHacks
+# eigenHacks
 
 ## A collection of N.I.N.A. sequencer instructions and triggers for specialized astrophotography use cases.
 
@@ -65,4 +26,3 @@ The following items are currently under early development.
     * Signal and Wait instructions that don't exist inside of a Synchronization Scope will share a machine-wide global scope.
 ! Known Issues: 
     * In the event any one instance of NINA crashes unexpectedly, all instances of NINA must be shut down in order for the Signal and Wait instructions to function correctly.
-")]
