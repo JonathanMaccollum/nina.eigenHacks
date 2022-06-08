@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace nina.eigenHacks.Synchronization.Instructions
 {
-    [ExportMetadata("Name", "Signal Ready and Wait")]
+    [ExportMetadata("Name", "Signal Ready and Wait (Alpha)")]
     [ExportMetadata("Description", "Signals that the sequence has reached a Barrier and waits for other participants to arrive.")]
     [ExportMetadata("Category", "Synchronization")]
     [Export(typeof(ISequenceItem))]

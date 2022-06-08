@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace nina.eigenHacks.Synchronization.Instructions
 {
-    [ExportMetadata("Name", "Synchronization Scope")]
+    [ExportMetadata("Name", "Synchronization Scope (Alpha)")]
     [ExportMetadata("Description", "Provides a cross-process barrier for synchronizing multiple instances.")]
     [ExportMetadata("Category", "Synchronization")]
     [Export(typeof(ISequenceItem))]

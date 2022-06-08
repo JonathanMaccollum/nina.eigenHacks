@@ -26,7 +26,7 @@ using NINA.Sequencer.Trigger;
 namespace nina.eigenHacks.Recoverability.Triggers
 {
 
-    [ExportMetadata("Name", "Center after Exposure Count")]
+    [ExportMetadata("Name", "Center after Exposure Count (Alpha)")]
     [ExportMetadata("Description", "A trigger to initiate a recentering after a fixed number of exposures have been taken.")]
     [ExportMetadata("Icon", "TargetWithArrowSVG")]
     [ExportMetadata("Category", "Lbl_SequenceCategory_Telescope")]
@@ -68,7 +68,6 @@ namespace nina.eigenHacks.Recoverability.Triggers
             this.domeFollower = domeFollower;
             this.imageSaveMediator = imageSaveMediator;
             AfterExposures = 10;
-            Coordinates = new InputCoordinates();
             this.imageSavedMediator = imageSavedMediator;
         }
 
@@ -94,7 +93,6 @@ namespace nina.eigenHacks.Recoverability.Triggers
             {
                 TriggerRunner = (SequentialContainer)TriggerRunner.Clone(),
                 AfterExposures = AfterExposures,
-                Coordinates = Coordinates?.Clone()
             };
         }
 
@@ -110,36 +108,26 @@ namespace nina.eigenHacks.Recoverability.Triggers
             }
         }
 
-        private bool hasCoordinatesFromContext;
-        [JsonProperty]
-        public InputCoordinates Coordinates { get; set; }
-
-
-        public bool HasCoordinatesFromContext
-        {
-            get => hasCoordinatesFromContext;
-            set
-            {
-                hasCoordinatesFromContext = value;
-                RaisePropertyChanged();
-            }
-        }
-
 
         public override async Task Execute(ISequenceContainer context, IProgress<ApplicationStatus> progress, CancellationToken token)
         {
+            var coordinates = ItemUtility.RetrieveContextCoordinates(this.Parent);
+            if (coordinates?.Coordinates == null)
+                return;
+
             ExposuresTaken = 0;
             var centerSequenceItem = new Center(
-                profileService, 
-                telescopeMediator, 
-                imagingMediator, 
-                filterWheelMediator, 
-                guiderMediator, 
-                domeMediator, 
-                domeFollower, 
+                profileService,
+                telescopeMediator,
+                imagingMediator,
+                filterWheelMediator,
+                guiderMediator,
+                domeMediator,
+                domeFollower,
                 new PlateSolverFactoryProxy(), new WindowServiceFactory())
             {
-                Coordinates = Coordinates
+                Coordinates = new InputCoordinates(
+                    coordinates?.Coordinates)
             };
             await centerSequenceItem.Execute(progress, token);
         }
@@ -203,16 +191,6 @@ namespace nina.eigenHacks.Recoverability.Triggers
             }
             else
             {
-                var contextCoordinates = ItemUtility.RetrieveContextCoordinates(this.Parent);
-                if (contextCoordinates != null)
-                {
-                    Coordinates.Coordinates = contextCoordinates.Coordinates;
-                    HasCoordinatesFromContext = true;
-                }
-                else
-                {
-                    HasCoordinatesFromContext = false;
-                }
                 Validate();
                 if (Parent.Status == SequenceEntityStatus.RUNNING)
                 {
@@ -228,21 +206,33 @@ namespace nina.eigenHacks.Recoverability.Triggers
 
         public bool Validate()
         {
-            var issues = new List<string>();
-            if (!HasCoordinatesFromContext)
+            try
             {
-                issues.Add(Loc.Instance["LblNoTarget"]);
+                var issues = new List<string>();
+                if (ItemUtility.RetrieveContextCoordinates(this.Parent) == null)
+                {
+                    issues.Add(Loc.Instance["LblNoTarget"]);
+                }
+                if (!cameraMediator.GetInfo().Connected)
+                {
+                    issues.Add(Loc.Instance["LblCameraNotConnected"]);
+                }
+                if (!telescopeMediator.GetInfo().Connected)
+                {
+                    issues.Add(Loc.Instance["LblTelescopeNotConnected"]);
+                }
+                Issues = issues;
+                foreach (var issue in issues)
+                {
+                    Logger.Warning($"{nameof(CenterAfterExposureCount)} Validation Failure: {issue}");
+                }
+                return issues.Any();
             }
-            if (!cameraMediator.GetInfo().Connected)
+            catch(Exception ee)
             {
-                issues.Add(Loc.Instance["LblCameraNotConnected"]);
+                Logger.Warning($"{nameof(CenterAfterExposureCount)} Validation Failure: {ee}");
+                throw;
             }
-            if (!telescopeMediator.GetInfo().Connected)
-            {
-                issues.Add(Loc.Instance["LblTelescopeNotConnected"]);
-            }
-            Issues = issues;
-            return issues.Any();
         }
     }
 }
