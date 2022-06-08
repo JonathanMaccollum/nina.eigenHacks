@@ -14,8 +14,8 @@ The following items are currently under early development.
 
 ### Synchronization
 * Signal and Wait
-    * This instruction is intended for orchestrating multiple imaging cameras on the same mount and pc.  
-    * This synchronization primitive allows multiple instances of NINA to reach and wait at a common barrier before proceeding to the next task.
+    * This instruction is intended for orchestrating multiple instances of NINA running on a single imaging device.  
+    * This synchronization primitive allows multiple instances to reach and wait at a common barrier before proceeding to the next task.
     * When a tag is specified, and the instruction is executed, the instance will wait until other instances of NINA arrive at the same tag.
     * *Careful placement of this instruction and in-person testing is highly recommended.*
     * When one instance of Nina closes gracefully while other instances are waiting for it to signal, those other instances will no longer have to wait and will start to execute the next instruction instantly.
